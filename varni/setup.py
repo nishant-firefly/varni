@@ -29,4 +29,10 @@ setup(
         "psycopg2>=2.8.0,<3.0.0",
         "elasticsearch>=7.0.0,<8.0.0",
     ],
+    entry_points={
+        # 'console_scripts': [
+        #     'varni-migrate=varni.dbs.migrations.manage_migrations:run_migrations',
+        #     'varni-setup-db=varni.dbs.migrations.manage_migrations:MigrationManager().setup_database',
+        # ],
+    },
 )
