@@ -1,60 +1,35 @@
+# File: varni/dbs/migrations/manage_migrations.py
 import argparse
-from migrate_tool import run_makemigrations, run_migrate, run_migrations
+import os
+from migration_manager import MigrationManager
 
 def main():
-    parser = argparse.ArgumentParser(description="Manage database migrations using Alembic.")
-    
-    parser.add_argument(
-        'command', 
-        choices=['makemigrations', 'migrate', 'migrations'], 
-        help="Command to run: 'makemigrations' to generate migration files, 'migrate' to apply migrations, 'migrations' to run both sequentially."
-    )
-
-    parser.add_argument(
-        '--alembic-config', 
-        default='alembic.ini', 
-        help="Path to the Alembic configuration file. Default is 'alembic.ini' in the current directory."
-    )
-
-    parser.add_argument(
-        '--db-url', 
-        required=True, 
-        help="Database URL to connect to (e.g., 'postgresql://user:password@localhost/dbname')."
-    )
-
-    parser.add_argument(
-        '--models-module', 
-        default='models', 
-        help="Python module where the SQLAlchemy models are defined. Default is 'models'."
-    )
-
-    parser.add_argument(
-        '--message', 
-        default='Auto migration', 
-        help="Message for the migration file. Only used with 'makemigrations'."
-    )
-
+    parser = argparse.ArgumentParser(description="Manage database migrations and setup using Alembic.")
+    parser.add_argument('command', choices=['new-db-setup', 'update-db', 'push-db', 'seed-db', 'apply-sql'], help="Commands: 'new-db-setup' to initialize the project, 'update-db' to generate and apply model changes, 'push-db' to apply migrations, 'seed-db' to insert initial data, 'apply-sql' to apply a SQL patch.")
+    parser.add_argument('--sql-file', help="Path to the SQL file for the 'apply-sql' command.")
     args = parser.parse_args()
 
-    if args.command == 'makemigrations':
-        run_makemigrations(
-            alembic_config_path=args.alembic_config, 
-            db_url=args.db_url, 
-            models_module=args.models_module, 
-            message=args.message
-        )
-    elif args.command == 'migrate':
-        run_migrate(
-            alembic_config_path=args.alembic_config, 
-            db_url=args.db_url, 
-            models_module=args.models_module
-        )
-    elif args.command == 'migrations':
-        run_migrations(
-            alembic_config_path=args.alembic_config, 
-            db_url=args.db_url, 
-            models_module=args.models_module
-        )
+    migration_manager = MigrationManager()
+
+    if args.command == 'new-db-setup':
+        print(f"Setting up new project: {os.getenv('PROJECT_NAME')}")
+        migration_manager.run_migrations()
+        migration_manager.seed_data()
+    elif args.command == 'update-db':
+        print("Updating the database with new migrations...")
+        migration_manager.makemigrations()
+    elif args.command == 'push-db':
+        print("Pushing the latest migrations to the database...")
+        migration_manager.migrate()
+    elif args.command == 'seed-db':
+        print("Seeding initial data into the database...")
+        migration_manager.seed_data()
+    elif args.command == 'apply-sql':
+        if args.sql_file:
+            print(f"Applying SQL patch: {args.sql_file}")
+            migration_manager.apply_sql_patch(args.sql_file)
+        else:
+            print("Please provide a SQL file path with the --sql-file argument.")
 
 if __name__ == "__main__":
     main()
