@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: varni
+Version: 0.1.0
+Summary: Varni: A low-code/no-code platform for managing database migrations and building Python applications.
+Home-page: https://www.varnitech.co
+Author: Nishant Saxena
+Author-email: nishant.saxena.varad@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Framework :: FastAPI
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: Topic :: Software Development :: Code Generators
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: SQLAlchemy<2.0.0,>=1.3.0
+Requires-Dist: alembic<2.0.0,>=1.4.0
+Requires-Dist: python-dotenv>=1.0.0
+Requires-Dist: fastapi<0.70.0,>=0.60.0
+Requires-Dist: uvicorn<0.16.0,>=0.11.0
+Requires-Dist: psycopg2<3.0.0,>=2.8.0
+Requires-Dist: elasticsearch<8.0.0,>=7.0.0

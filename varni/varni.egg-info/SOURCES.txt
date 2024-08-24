@@ -1,0 +1,9 @@
+README.md
+setup.py
+varni/__init__.py
+varni/hello_world.py
+varni.egg-info/PKG-INFO
+varni.egg-info/SOURCES.txt
+varni.egg-info/dependency_links.txt
+varni.egg-info/requires.txt
+varni.egg-info/top_level.txt
