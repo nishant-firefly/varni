@@ -17,6 +17,24 @@ pip install -e .
 python -c "import varni.hello_world"
 # Can change the hello world and verify its reflecting without reinstalling
 ```
+### Fresh Setup Prject 
+.env
+``` 
+POSTGRES_USER=your_postgres_user
+POSTGRES_PASSWORD=your_postgres_password
+POSTGRES_DB=your_database_name
+MODEL_MODULES=varni.dbs.auth.models,example_project.models.custom_user
+PROJECT_NAME=example_project
+```
+
+
+### Installation Mode : Development
+``` git clone https://github.com/nishant-firefly/varni.git 
+cd varni
+pip install -e .
+python -c "import varni.hello_world"
+# Can change the hello world and verify its reflecting without reinstalling
+```
 # License
 This software is proprietary to Varnitech.co. All rights are reserved. Unauthorized use, modification, or distribution of this software is strictly prohibited. For any inquiries regarding permissions, please contact nishant.saxena@varnitech.co.
 

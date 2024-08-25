@@ -6,11 +6,11 @@ setup(
     author="Nishant Saxena",
     author_email="nishant.saxena.varad@gmail.com",
     description="Varni: A low-code/no-code platform for managing database migrations and building Python applications.",
-    long_description=open("README.md").read(),
+    long_description=open("varni/README.md").read(),
     long_description_content_type="text/markdown",
     url="https://www.varnitech.co",
-    packages=find_packages(),  # Automatically find all packages under varni/
-    include_package_data=True,  # Include non-Python files specified in MANIFEST.in
+    packages=find_packages(),
+    include_package_data=True,
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
@@ -21,7 +21,7 @@ setup(
     ],
     python_requires='>=3.11',
     install_requires=[
-        "SQLAlchemy>=1.3.0,<2.0.0",  # Specify compatible version
+        "SQLAlchemy>=1.3.0,<2.0.0",
         "alembic>=1.4.0,<2.0.0",
         "python-dotenv>=1.0.0",
         "fastapi>=0.60.0,<0.70.0",
@@ -30,9 +30,9 @@ setup(
         "elasticsearch>=7.0.0,<8.0.0",
     ],
     entry_points={
-        # 'console_scripts': [
-        #     'varni-migrate=varni.dbs.migrations.manage_migrations:run_migrations',
-        #     'varni-setup-db=varni.dbs.migrations.manage_migrations:MigrationManager().setup_database',
-        # ],
+        'console_scripts': [
+            'varni-db-setup=varni.dbs.migrations.varni_db_setup:main',
+            'varni-migrate=varni.dbs.migrations.migration_tool:main',
+        ],
     },
 )
