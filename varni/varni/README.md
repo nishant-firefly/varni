@@ -13,9 +13,8 @@ To install the Varni package directly from GitHub in a production environment, u
 ### Installation Mode : Development
 ``` git clone https://github.com/nishant-firefly/varni.git 
 cd varni
-pip install -e .
-python -c "import varni.hello_world"
-# Can change the hello world and verify its reflecting without reinstalling
+pip install -e . # -e ensure without reinstalling all works 
+python -c "import varni.hello_world" 
 ```
 ### Fresh Setup Prject 
 .env
