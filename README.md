@@ -5,6 +5,6 @@
 
 ``` python -c "import varni; varni.how_to_setup()"```
 
-``` Next : python varni-dbaetup should set up the project ```
+``` Next : python varni-db-setup should set up the db elastic search with instructions ```
 
     
