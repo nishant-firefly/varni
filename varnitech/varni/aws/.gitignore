@@ -165,7 +165,7 @@ override.tf.json
 # Other secrets
 secrets.yml
 secrets.json
-config.json
+# config.json
 
 # Python IDEs
 .vscode/
