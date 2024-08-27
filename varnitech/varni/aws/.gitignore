@@ -144,9 +144,9 @@ cython_debug/
 .localstack/
 
 # Docker images and containers
-docker-compose.yml
-Dockerfile
-docker-compose.override.yml
+#docker-compose.yml
+#Dockerfile
+#docker-compose.override.yml
 
 # Terraform
 *.tfstate
