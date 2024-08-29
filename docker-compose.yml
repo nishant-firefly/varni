@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  localstack:
+    image: localstack/localstack:latest
+    container_name: localstack_main
+    ports:
+      - "4566:4566"
+      - "4510:4510"
+    environment:
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - LOCALSTACK_SERVICES=lambda
+      - AWS_DEFAULT_REGION=us-east-1
+    volumes:
+      - "${LOCALSTACK_DOCKER_VOLUME:-./volume}:/volume"
+      - "/var/run/docker.sock:/var/run/docker.sock"
