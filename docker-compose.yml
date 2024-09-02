@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # version: '3.8'
 
 # services:
@@ -19,6 +18,8 @@
 #   localstack-network:
 #     driver: bridge
 
+
+
 services:
   localstack:
     image: localstack/localstack
@@ -30,22 +31,18 @@ services:
     volumes:
       - "./localstack:/etc/localstack"
       - "/var/run/docker.sock:/var/run/docker.sock"
-=======
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: always
 
-version: '3'
-services:
-  localstack:
-    image: localstack/localstack:latest
-    container_name: localstack_main
-    ports:
-      - "4566:4566"  # Main port for LocalStack services
-      - "4510:4510"  # Port for CloudWatch Logs (optional if you want to expose it)
-    environment:
-      - DOCKER_HOST=unix:///var/run/docker.sock
-      - LOCALSTACK_SERVICES=lambda,logs  # Add 'logs' to enable CloudWatch Logs
-      - AWS_DEFAULT_REGION=us-east-1
-    volumes:
-      - "${LOCALSTACK_DOCKER_VOLUME:-./volume}:/volume"
-      - "/var/run/docker.sock:/var/run/docker.sock"
-
->>>>>>> 586f47c5d13338ff068cd41454ece5e6672a400b
+# services:
+#   localstack:
+#     image: localstack/localstack
+#     ports:
+#       - "4566:4566"   # LocalStack Gateway
+#       - "4510-4559:4510-4559"  # LocalStack Ports
+#     environment:
+#       - DOCKER_HOST=unix:///var/run/docker.sock
+#     volumes:
+#       - "./localstack:/etc/localstack"
+#       - "/var/run/docker.sock:/var/run/docker.sock"
