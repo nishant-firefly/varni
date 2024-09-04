@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # SQS & SNS POC with FastAPI
 
@@ -164,3 +165,15 @@ This project demonstrates a FastAPI application with endpoints for testing SQS a
 
 
     
+=======
+## Install : 
+```cd <path to\varni\varnitech>```
+    
+```pip install -e .  # -e so live changes updated  will be reflected```
+
+``` python -c "import varni; varni.how_to_setup()"```
+
+``` Next : python varni-db-setup should set up the db elastic search with instructions ```
+
+    
+>>>>>>> 1d2c21dffb5e307dcb4fabc429f543894265cef7
