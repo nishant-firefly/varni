@@ -22,7 +22,7 @@ sqs_sns_poc/ │ ├── api/ │ ├── init.py # Initializes the API modu
 1. **Clone the repository:**
 
    ```sh
-   git clone https://github.com/your-username/sqs_sns_poc.git
+   git clone https://github.com/nishant-firefly/varni/sqs_sns_poc.git
    cd sqs_sns_poc
 
 2. **Set up a Python virtual environment:**
