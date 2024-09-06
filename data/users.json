@@ -1,0 +1,16 @@
+[
+    {
+        "id": 123,
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "address": "123 Main St, Springfield, IL",
+        "orders": [123, 124]
+    },
+    {
+        "id": 456,
+        "name": "Jane Smith",
+        "email": "jane.smith@example.com",
+        "address": "456 Elm St, Springfield, IL",
+        "orders": [125]
+    }
+]

@@ -1,0 +1,20 @@
+[
+    {
+        "id": 12345,
+        "name": "Smartphone",
+        "description": "A high-quality smartphone with a large display.",
+        "price": 699.99,
+        "category": "Electronics",
+        "stock_quantity": 50,
+        "rating": 4.5
+    },
+    {
+        "id": 67890,
+        "name": "Laptop",
+        "description": "A powerful laptop for gaming and work.",
+        "price": 1199.99,
+        "category": "Computers",
+        "stock_quantity": 30,
+        "rating": 4.7
+    }
+]
