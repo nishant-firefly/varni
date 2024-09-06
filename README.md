@@ -44,8 +44,10 @@ This project is a FastAPI application that interacts with a PostgreSQL database.
 
 1. **Clone the Repository:**
    ```bash
-   git clone <repository_url>
-   cd <repository_directory>
+   git clone https://github.com/nishant-firefly/varni.git
+
+   cd varni/my_fastapi_json_app
+
 
 2. **Create and Activate a Virtual Environment:**
 python -m venv venv
