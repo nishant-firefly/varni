@@ -1,0 +1,84 @@
+# version: '3'
+# services:
+#   localstack:
+#     image: localstack/localstack:latest
+#     container_name: localstack
+#     environment:
+#       - SERVICES=sns,sqs,lambda,iam,stepfunctions,s3
+#       - AWS_ACCESS_KEY_ID=test
+#       - AWS_SECRET_ACCESS_KEY=test
+#     ports:
+#       - "4566:4566" # LocalStack endpoint
+#       - "4571:4571" # SQS, SNS, Lambda, Step Functions ports
+#     volumes:
+#       - ./localstack:/etc/localstack
+
+#   postgres:
+#     image: postgres:14
+#     container_name: postgres
+#     environment:
+#       POSTGRES_USER: admin
+#       POSTGRES_PASSWORD: admin123
+#       POSTGRES_DB: mydatabase
+#     volumes:
+#       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+#     ports:
+#       - "5432:5432" # PostgreSQL port
+
+#   api:
+#     build: .
+#     container_name: api
+#     environment:
+#       - DATABASE_URL=postgresql://admin:admin123@postgres:5432/mydatabase
+#       - AWS_ENDPOINT=http://localstack:4566
+#       - AWS_ACCESS_KEY_ID=test
+#       - AWS_SECRET_ACCESS_KEY=test
+#       - REGION=us-east-1
+#     depends_on:
+#       - localstack
+#       - postgres
+#     ports:
+#       - "8000:8000" # FastAPI port
+
+
+version: '3'
+services:
+  localstack:
+    image: localstack/localstack:latest
+    container_name: localstack
+    environment:
+      - SERVICES=sns,sqs,lambda,iam,stepfunctions,s3,logs
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+    ports:
+      - "4566:4566" # LocalStack endpoint
+      - "4571:4571" # SQS, SNS, Lambda, Step Functions ports
+    volumes:
+      - ./localstack:/etc/localstack
+
+  postgres:
+    image: postgres:14
+    container_name: postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: mydatabase
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432" # PostgreSQL port
+
+  api:
+    build: .
+    container_name: api
+    environment:
+      - DATABASE_URL=postgresql://admin:admin123@postgres:5432/mydatabase
+      - AWS_ENDPOINT=http://localstack:4566
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+      - REGION=us-east-1
+    depends_on:
+      - localstack
+      - postgres
+    ports:
+      - "8000:8000" # FastAPI port
