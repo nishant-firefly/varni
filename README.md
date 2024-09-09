@@ -1,5 +1,8 @@
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 711b39c397af26f68a2e80e4b0eafa3a79964f5c
 # AWS LocalStack Project
 
 This project sets up a local development environment using LocalStack to simulate AWS services including SQS, SNS, IAM, Lambda, Step Functions, and S3. PostgreSQL is used for data storage, and FastAPI provides an API to interact with the data and AWS services.
