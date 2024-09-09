@@ -51,7 +51,7 @@ services:
       - AWS_ACCESS_KEY_ID=test
       - AWS_SECRET_ACCESS_KEY=test
     ports:
-      - "4566:4566" # LocalStack endpoint
+      - "4567:4566" # LocalStack endpoint
       - "4571:4571" # SQS, SNS, Lambda, Step Functions ports
     volumes:
       - ./localstack:/etc/localstack

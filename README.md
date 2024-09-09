@@ -1,12 +1,4 @@
 
-## Install : 
-```cd <path to\varni\varnitech>```
-    
-```pip install -e .  # -e so live changes updated  will be reflected```
-
-``` python -c "import varni; varni.how_to_setup()"```
-
-``` Next : python varni-db-setup should set up the db elastic search with instructions ```
 
 # AWS LocalStack Project
 
@@ -30,7 +22,7 @@ Ensure you have the following installed on your machine:
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/yourusername/aws_local_project.git
+   git clone https://github.com/nishant-firefly/varni.git
    cd aws_local_project
 
 
@@ -43,9 +35,42 @@ docker-compose up --build
 ## Create AWS Resources
 ** Once the containers are up, create the necessary AWS resources (IAM roles, Lambda function, S3 bucket, Step Functions) using the provided Python script: **
 
-docker exec -it api python aws_resources/create_resources.py
-or 
+## Ensure Resources Are Created
+
 python create_resources.py
+
+## Testing and Execute your invoke_step_function.py script to start the Step Function execution:
+
+(env) PS D:\aws_local_project\aws_resources> .\invoke_step_function.py
+
+## Verify S3 Bucket Content
+aws --endpoint-url=http://localhost:4566 s3 ls s3://my-localstack-bucket
+
+
+## Check Step Function Execution History
+
+aws --endpoint-url=http://localhost:4566 stepfunctions describe-execution --execution-arn arn:aws:states:us-east-1:000000000000:execution:MyStateMachine:dd126180-a129-4dfb-9eb4-a1c5d1ccc0f3
+
+## Verify IAM Role
+
+aws --endpoint-url=http://localhost:4566 iam list-roles
+aws --endpoint-url=http://localhost:4566 iam list-attached-role-policies --role-name LambdaExecutionRole
+
+
+## Invoke the Lambda function:
+aws --endpoint-url=http://localhost:4566 lambda invoke --function-name MyLambda --payload file://payload.json output.json
+
+## Check Output: Inspect the contents of output.json:
+
+cat output.json
+
+
+## invoke the step function
+aws --endpoint-url=http://localhost:4566 stepfunctions describe-execution --execution-arn arn:aws:states:us-east-1:000000000000:execution:MyStateMachine:e22b4a8d-023d-4557-b8cf-1dc528e6d95c
+
+## Output
+(env) PS D:\aws_local_project\aws_resources> python create_resources.py
+Resources created: IAM, Lambda, S3, and Step Functions.
 
 
 
