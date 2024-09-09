@@ -51,7 +51,7 @@ def setup_project_files():
         # Files that go into the models directory
         'auth_models.py': os.path.join(os.path.dirname(__file__), '../auth/models.py'),
         # 'example_model.py': os.path.join(template_dir, 'example_model.py.template'),
-        'README.txt': os.path.join(template_dir, 'README.txt.template'),
+        # 'README.txt': os.path.join(template_dir, 'README.txt.template'),
     }
 
     for filename, template_path in files_to_create.items():
@@ -214,6 +214,28 @@ def run_alembic_commands(db_url):
 def main():
     """Main function to trigger the setup process."""
     setup_project_files()
+
+    # Prompt user for PostgreSQL connection details
+    username = os.getenv('POSTGRES_USER')
+    password = os.getenv('POSTGRES_PASSWORD')
+    host = os.getenv('POSTGRES_HOST', 'localhost')
+    port = os.getenv('POSTGRES_PORT', '5432')
+    database = os.getenv('POSTGRES_DB')
+
+    # URL-encode the password
+    encoded_password = quote(password)
+
+    # Replace '%' with '%%' to escape it in the configuration file
+    encoded_password = encoded_password.replace('%', '%%')
+
+    # Construct the database URL
+    db_url = f'postgresql://{username}:{encoded_password}@{host}:{port}/{database}'
+
+    # Run Alembic commands with the constructed database URL
+    run_alembic_commands(db_url)
+
+def main_alembic():
+    """Main function to trigger the setup process."""
 
     # Prompt user for PostgreSQL connection details
     username = os.getenv('POSTGRES_USER')
