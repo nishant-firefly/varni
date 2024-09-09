@@ -1,13 +1,4 @@
 
-## Install : 
-```cd <path to\varni\varnitech>```
-    
-```pip install -e .  # -e so live changes updated  will be reflected```
-
-``` python -c "import varni; varni.how_to_setup()"```
-
-``` Next : python varni-db-setup should set up the db elastic search with instructions ```
-
 # AWS LocalStack Project
 
 This project sets up a local development environment using LocalStack to simulate AWS services including SQS, SNS, IAM, Lambda, Step Functions, and S3. PostgreSQL is used for data storage, and FastAPI provides an API to interact with the data and AWS services.
