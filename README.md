@@ -1,8 +1,3 @@
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 711b39c397af26f68a2e80e4b0eafa3a79964f5c
 # AWS LocalStack Project
 
 This project sets up a local development environment using LocalStack to simulate AWS services including SQS, SNS, IAM, Lambda, Step Functions, and S3. PostgreSQL is used for data storage, and FastAPI provides an API to interact with the data and AWS services.
@@ -70,13 +65,6 @@ cat output.json
 
 ## invoke the step function
 aws --endpoint-url=http://localhost:4566 stepfunctions describe-execution --execution-arn arn:aws:states:us-east-1:000000000000:execution:MyStateMachine:e22b4a8d-023d-4557-b8cf-1dc528e6d95c
-
-## Output
-(env) PS D:\aws_local_project\aws_resources> python create_resources.py
-Resources created: IAM, Lambda, S3, and Step Functions.
-
-
-
 
 
 ## Usage
