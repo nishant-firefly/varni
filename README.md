@@ -70,18 +70,7 @@ type output.json
 - [AWS CLI](https://aws.amazon.com/cli/) configured to interact with LocalStack.
 - PowerShell or any command-line interface for executing commands.
 
-### Create the Lambda Function
 
-1. **Prepare the Lambda Function Code**
-
-   Create a file named `lambda_function.py` with the following content:
-
-   ```python
-   def lambda_handler(event, context):
-       return {
-           'statusCode': 200,
-           'body': 'Hello from Lambda!'
-       }
 
 
 Testing
