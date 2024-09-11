@@ -1,0 +1,48 @@
+# version: '3.8'
+
+# services:
+#   localstack:
+#     image: localstack/localstack
+#     ports:
+#       - "4566:4566"  # LocalStack API Gateway
+#     environment:
+#       - DOCKER_HOST=unix:///var/run/docker.sock
+#       - DEFAULT_REGION=us-east-1
+#     volumes:
+#       - "${LOCALSTACK_DOCKER_VOLUME:-./volume}:/var/lib/localstack"
+#       - "/var/run/docker.sock:/var/run/docker.sock"
+#     networks:
+#       - localstack-network
+
+# networks:
+#   localstack-network:
+#     driver: bridge
+
+
+
+services:
+  localstack:
+    image: localstack/localstack
+    ports:
+      - "4566:4566"   # LocalStack Gateway
+      - "4510-4559:4510-4559"  # LocalStack Ports
+    environment:
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - "./localstack:/etc/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: always
+
+# services:
+#   localstack:
+#     image: localstack/localstack
+#     ports:
+#       - "4566:4566"   # LocalStack Gateway
+#       - "4510-4559:4510-4559"  # LocalStack Ports
+#     environment:
+#       - DOCKER_HOST=unix:///var/run/docker.sock
+#     volumes:
+#       - "./localstack:/etc/localstack"
+#       - "/var/run/docker.sock:/var/run/docker.sock"

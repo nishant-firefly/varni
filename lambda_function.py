@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import psycopg2
 import json
 
@@ -17,3 +18,11 @@ def lambda_handler(event, context):
         'statusCode': 200,
         'body': json.dumps(data)
     }
+=======
+def lambda_handler(event, context):
+    return {
+        'statusCode': 200,
+        'body': 'Hello from Lambda!'
+    }
+
+>>>>>>> fe9669a28d20ab64e26bef6b23649a0e3d42c00e
