@@ -1,0 +1,58 @@
+# from fastapi import FastAPI
+
+# app = FastAPI()
+
+# @app.get("/")
+# async def read_root():
+#     return {"message": "Welcome to the CLOCKIN API"}
+
+
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+
+app = FastAPI()
+
+# Root endpoint
+@app.get("/")
+async def read_root():
+    return {"message": "Welcome to the CLOCKIN API"}
+
+# Model for login via email with OTP
+class EmailOTPRequest(BaseModel):
+    email: str
+
+# POST /noauth/api/login-via-email/
+@app.post("/noauth/api/login-via-email/")
+async def login_via_email(request: EmailOTPRequest):
+    if not request.email:
+        raise HTTPException(status_code=400, detail="Email is required")
+    # Simulate OTP sending
+    return {"message": "Otp Send successfully", "next_page": "noauth/verify-otp/"}
+
+# Model for reset password request (Send OTP)
+class PasswordResetRequest(BaseModel):
+    email: str
+
+# POST /noauth/api/reset/password/email/
+@app.post("/noauth/api/reset/password/email/")
+async def reset_password(request: PasswordResetRequest):
+    if not request.email:
+        raise HTTPException(status_code=400, detail="Email is required")
+    # Simulate password reset OTP sending
+    return {"message": "Otp sent successfully", "next_page": "/noauth/verify-otp/"}
+
+# Model for changing password with OTP
+class ChangePasswordRequest(BaseModel):
+    email: str
+    otp: str
+    password: str
+    confirm_password: str
+
+# POST /noauth/api/reset/password/email/otp/
+@app.post("/noauth/api/reset/password/email/otp/")
+async def change_password(request: ChangePasswordRequest):
+    if request.password != request.confirm_password:
+        raise HTTPException(status_code=400, detail="Passwords do not match")
+    # Simulate password change
+    return {"message": "Password changed successfully"}
+
