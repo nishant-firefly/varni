@@ -69,7 +69,7 @@ class EntityRolePermission(Base):
     entity = relationship('Entity', backref='role_permissions')
 
 # Create an engine and a session
-engine = create_engine('postgresql://username:password@localhost/dbname')
+engine = create_engine('postgresql://nishant:nishant@localhost/clockin')
 
 # Create all tables
 Base.metadata.create_all(engine)

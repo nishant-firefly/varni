@@ -1,0 +1,1 @@
+PS D:\workspace\varni\clockin>  ..\..\venv\Scripts\activate 
