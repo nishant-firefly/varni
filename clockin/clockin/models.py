@@ -1,7 +1,10 @@
+# D:\workspace\varni\clockin\clockin\models.py
+
 from sqlalchemy import Column, Integer, String, Text, Boolean, ForeignKey, create_engine, Table
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 
+# Create a declarative base instance
 Base = declarative_base()
 
 # Association table for many-to-many relationship between Role and User
@@ -68,11 +71,8 @@ class EntityRolePermission(Base):
     role = relationship('Role', backref='entity_permissions')
     entity = relationship('Entity', backref='role_permissions')
 
-# Create an engine and a session
+# Create an engine and bind it to the Base
 engine = create_engine('postgresql://nishant:nishant@localhost/clockin')
 
-# Create all tables
-
-# At the end of models.py
 if __name__ == "__main__":
     Base.metadata.create_all(bind=engine)

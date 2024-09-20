@@ -1,3 +1,5 @@
+# D:\workspace\varni\clockin\clockin\main.py
+
 from fastapi import FastAPI, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from pydantic import BaseModel
@@ -5,8 +7,9 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from passlib.context import CryptContext
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from models import Base, User, Role, Company, Entity, EntityRolePermission  # Import your SQLAlchemy models
 
+# Adjust import paths for models
+from models import Base, User, Role, Company, Entity, EntityRolePermission
 
 # Database settings
 SQLALCHEMY_DATABASE_URL = "postgresql://nishant:nishant@localhost/clockin"
@@ -30,7 +33,9 @@ def get_db():
     finally:
         db.close()
 
-# Pydantic models for input/output
+# Define your endpoints below
+# (your previously defined FastAPI routes like creating users, roles, etc.)
+# # Pydantic models for input/output
 class UserCreate(BaseModel):
     first_name: str
     last_name: str = None
@@ -45,7 +50,8 @@ class UserOut(BaseModel):
     is_active: bool
 
     class Config:
-        orm_mode = True
+        from_attributes = True
+        arbitrary_types_allowed = True
 
 class RoleCreate(BaseModel):
     name: str
