@@ -1,1 +1,7 @@
 PS D:\workspace\varni\clockin>  ..\..\venv\Scripts\activate 
+alembic init alembic
+alembic revision --autogenerate -m "Initial migration"
+
+http://127.0.0.1:8000/users/
+
+

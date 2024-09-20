@@ -7,8 +7,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from models import Base, User, Role, Company, Entity, EntityRolePermission  # Import your SQLAlchemy models
 
+
 # Database settings
-SQLALCHEMY_DATABASE_URL = "postgresql://username:password@localhost/dbname"
+SQLALCHEMY_DATABASE_URL = "postgresql://nishant:nishant@localhost/clockin"
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
@@ -144,4 +145,4 @@ def grant_entity_permissions(
 ):
     db_role_permission = EntityRolePermission(role_id=role_id, entity_id=entity_id, create=create, read=read, update=update, delete=delete)
     db.add(db_role_permission)
-    db.commit(
+    db.commit()

@@ -1,0 +1,11 @@
+Generic single-database configuration.
+PS D:\workspace\varni\clockin>  ..\..\venv\Scripts\activate 
+
+pip install -r requirements.txt
+
+alembic revision --autogenerate -m "Initial migration"
+alembic upgrade head
+
+
+uvicorn app.main:app --reload
+

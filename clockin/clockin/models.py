@@ -72,4 +72,7 @@ class EntityRolePermission(Base):
 engine = create_engine('postgresql://nishant:nishant@localhost/clockin')
 
 # Create all tables
-Base.metadata.create_all(engine)
+
+# At the end of models.py
+if __name__ == "__main__":
+    Base.metadata.create_all(bind=engine)
