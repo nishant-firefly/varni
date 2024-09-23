@@ -19,6 +19,13 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 # FastAPI app instance
 app = FastAPI()
 
+class EmailLoginRequest(BaseModel):
+    email: str
+
+@app.post("/noauth/api/login-via-email/")
+async def login_via_email(data: EmailLoginRequest):
+    return {"message": "Login via email endpoint reached"}
+
 # Password encryption context
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
