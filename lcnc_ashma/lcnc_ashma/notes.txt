@@ -1,0 +1,20 @@
+PS D:\workspace\varni\lcnc_ashma>  ..\..\venv\Scripts\activate 
+alembic init alembic
+alembic revision --autogenerate -m "Initial migration"
+alembic upgrade head
+
+open cmd:
+python main.py
+
+
+PS D:\workspace\varni\lcnc_ashma\lcnc_ashma> uvicorn main:app --reload
+
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+http://127.0.0.1:8000/docs
+
+## Test with postman
+import LCNC_ASHMA.postman_collection.json
+
+
+
+
