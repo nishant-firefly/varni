@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entity Role Permissions List</title>
+</head>
+<body>
+    <h1>Entity Role Permissions List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Role</th>
+                <th>Entity</th>
+                <th>Create</th>
+                <th>Read</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for permission in permissions %}
+            <tr>
+                <td>{{ permission.role.name }}</td>
+                <td>{{ permission.entity.entity_label }}</td>
+                <td>{{ permission.can_create }}</td>
+                <td>{{ permission.can_read }}</td>
+                <td>{{ permission.can_update }}</td>
+                <td>{{ permission.can_delete }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">No permissions found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

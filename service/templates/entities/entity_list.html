@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entity List</title>
+</head>
+<body>
+    <h1>Entity List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Entity Label</th>
+                <th>URL</th>
+                <th>Dashboard URL</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entity in entities %}
+            <tr>
+                <td>{{ entity.entity_label }}</td>
+                <td>{{ entity.url }}</td>
+                <td>{{ entity.dashboard_url }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">No entities found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
