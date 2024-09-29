@@ -1,0 +1,6 @@
+CLean Up 
+Move in Varni 
+Path append in __init__ and test after that 
+Volume data from .env and not hard coded in project dir and ignore git data , CONFIG_FILE = 'config.json'ENV_FILE = '.env', generate_env, check_system as utils 
+Make Production Ready
+Add to packages/varni :: packages\varni\varni\utils\aws
