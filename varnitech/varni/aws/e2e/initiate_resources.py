@@ -1,4 +1,0 @@
-from initiate_dynamo import one_time_dynamo_set_up
-from initiate_step_lambda import initiate_lambda_step
-one_time_dynamo_set_up()
-initiate_lambda_step()

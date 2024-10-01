@@ -1,0 +1,140 @@
+
+python -m venv venv
+venv\Scripts\activate
+
+1. python manage.py startapp service
+("service" is model name)
+
+2. Company, Role, User, Entity, EntityRolePermission
+
+python .\manage.py import_json
+
+python manage.py makemigrations
+python manage.py migrate
+
+python manage.py runserver
+
+http://127.0.0.1:8000/
+
+
+
+
+a Postman collection for a project related to user authentication, including endpoints for login, password resets, and user registration. Here's a high-level overview of the endpoints based on the file:
+Login with OTP (/noauth/api/login-via-email/):
+Login with Password (/noauth/api/login-via-email/password/):
+Password Reset (/noauth/api/reset/password/email/):
+Change Password (/noauth/api/reset/password/email/otp/):
+User Verification via OTP (/noauth/api/verify-otp/):
+Token Refresh (/api/refresh-token/):
+
+under the Admin Menu based on the CLOCKIN.postman_collection.json file:
+User Registration(/auth/user/registration/)
+Roles( /api/roles/)
+Role to User Mapping(/api/role-to-user-mapping/)
+Entity(/api/entity/)
+Entity Role Permissions(/api/entity-role-permissions/)
+Company(/api/company/)
+Projects(api/projects/)
+User Projects(/api/user-projects/)
+Personal Information(/api/personal-information/)
+Address History(/api/address-history/)
+Education(/api/education/)
+Employment History
+
+URL: /api/employment-history/
+Past References
+
+URL: /api/past-references/
+Users Personal Information
+
+URL: /api/users/personal-information/
+
+Users Address History
+URL: /api/users/address-history/
+
+Users Past References
+URL: /api/users/past-references/
+
+Users Education
+URL: /api/users/education/
+
+Users Employment History
+URL: /api/users/employment-history/
+
+Clock In Configuration
+URL: /api/clockin-configuration/
+
+Clock In Monthly
+URL: /api/clockin-monthly/
+
+Clock In Weekly
+URL: /api/clockin-weekly/
+
+Clock In Configuration (Dashboard)( /dashboard/clock-in/)
+
+Home( /api/home/)
+
+
+http://127.0.0.1:8000/noauth/api/login-via-email/
+
+all 30 api in 
+D:\clockin_api\clockin_api\clockin_api\urls.py
+
+path('admin/', admin.site.urls),
+    path('', views.homePage),  # Ensure these functions are defined in clockin_api.views
+    path('Home/', views.home),
+    path('ClockinDetails/', views.ClockinDetails),
+    # Auth APIs
+    path('noauth/api/login-via-email/', login_with_otp, name='login_with_otp'),
+    path('noauth/api/login-via-email/password/', login_with_password, name='login_with_password'),
+    path('noauth/api/reset/password/email/', reset_password, name='reset_password'),
+    path('noauth/api/reset/password/email/otp/', change_password, name='change_password'),
+    path('noauth/api/verify-otp/', verify_otp, name='verify_otp'),
+    path('api/refresh-token/', token_refresh, name='token_refresh'),
+    path('auth/user/registration/', user_registration, name='user_registration'),
+    path('auth/configuration/', auth_configuration, name='auth_configuration'),
+
+    # Admin Menu APIs
+    path('api/roles/', roles, name='roles'),
+    path('api/role-to-user-mapping/', role_to_user_mapping, name='role_to_user_mapping'),
+    path('api/entity/', entity, name='entity'),
+    path('api/entity-role-permissions/', entity_role_permissions, name='entity_role_permissions'),
+    path('api/company/', company, name='company'),
+    path('api/projects/', projects, name='projects'),
+    path('api/user-projects/', user_projects, name='user_projects'),
+
+    # Personal Information and History APIs
+    path('api/personal-information/', personal_information, name='personal_information'),
+    path('api/address-history/', address_history, name='address_history'),
+    path('api/education/', education, name='education'),
+    path('api/employment-history/', employment_history, name='employment_history'),
+    path('api/past-references/', past_references, name='past_references'),
+
+    # Clock-in APIs
+    path('api/clockin-configuration/', clock_in_configuration, name='clock_in_configuration'),
+    path('api/clockin-monthly/', clock_in_monthly, name='clock_in_monthly'),
+    path('api/clockin-weekly/', clock_in_weekly, name='clock_in_weekly'),
+
+    # Home API
+    path('dashboard/clock-in/', home, name='home'),
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

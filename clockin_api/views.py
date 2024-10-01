@@ -31,3 +31,11 @@ def entity_list(request):
 def entity_role_permission_list(request):
     permissions = EntityRolePermission.objects.all()
     return render(request, 'permissions/permission_list.html', {'permissions': permissions})
+
+
+
+
+
+
+
+

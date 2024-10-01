@@ -1,8 +1,0 @@
-boto3
-<<<<<<< HEAD
-python-dotenv
-=======
-requests
-python-dotenv
-
->>>>>>> 586f47c5d13338ff068cd41454ece5e6672a400b
